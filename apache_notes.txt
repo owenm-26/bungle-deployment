@@ -1,0 +1,28 @@
+apt-get install mysql-server
+apt-get install libapache2-mod-php5 php5-mysql
+a2enmod php5
+
+# Apache conf for
+# Project 2
+####################
+
+WSGIDaemonProcess project2 user=project2 group=project2 processes=1 threads=5 python-path=/home/jhalderm/388/projects/project2/bungle/
+
+# Add trailing slash
+RedirectMatch 301 ^/project2$ http://eecs388.org/project2/
+
+WSGIScriptAlias /project2 /home/jhalderm/388/projects/project2/bungle/app.py
+
+<Directory /home/jhalderm/388/projects/project2/bungle/>
+        WSGIProcessGroup project2
+        WSGIApplicationGroup %{GLOBAL}
+        Order allow,deny
+        Allow from all
+</Directory>
+
+Alias /project2/sqlinject0 /home/jhalderm/388/projects/project2/sqlinject0
+Alias /project2/sqlinject1 /home/jhalderm/388/projects/project2/sqlinject1
+Alias /project2/sqlinject2 /home/jhalderm/388/projects/project2/sqlinject2
+#Alias /project2/sqlinject3 /home/jhalderm/388/projects/project2/sqlinject3
+
+
