@@ -1,0 +1,16 @@
+To create the SQL database, run mysql -u root -p and execute these commands:
+
+create database project2;
+create user 'project2'@'localhost' identified by 'a23e18e1ec8c0500c00fe45a4c37217e6a5cedd6008eb2b1';
+create user 'project2-ro'@'localhost' identified by '1047283503fa3d4a618a3ed23f79c0a235b6695456871c5d';
+grant insert,update,select on project2.* to 'project2'@'localhost';
+grant select on project2.* to 'project2-ro'@'localhost';
+use project2;
+create table users (id int not null auto_increment, username varchar(32) not null, password varchar(32) not null, passwordhash blob(16), primary key (id), unique index (username));
+create table history (id int not null auto_increment, user_id int not null, query varchar(2048) not null, primary key (id), index (user_id));
+
+Then, to start a local server, run 
+
+python project2.py
+
+and connect to http://127.0.0.1:8080/
