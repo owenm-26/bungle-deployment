@@ -121,8 +121,14 @@ def setdefenses():
     else:
         redirect("./")
 
+@bottle.route('/sqlinject<inject_num:int>')
+def serve_sqlinject(inject_num):
+    
+    root_dir = f'./sqlinject{inject_num}'
+    return bottle.static_file("index.html", root=root_dir)
+
 
 if __name__ == "__main__":
     debug(True)
     # run(reloader=True)
-    run(host="0.0.0.0", port=os.environ.get("PORT", 5000), reloader=True)
+    run(host="0.0.0.0", port=os.environ.get("PORT", 5001), reloader=True)
