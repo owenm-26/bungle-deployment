@@ -1,3 +1,5 @@
 .DS_Store
 authsecret
 dbsecret
+.venv
+__pycache__

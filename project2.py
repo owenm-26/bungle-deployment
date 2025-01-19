@@ -17,7 +17,7 @@ from bottle import (
 import defenses
 import database
 
-authSecret = open("/bungle/bungle/authsecret").read()
+authSecret = open("./authsecret").read()
 
 
 @get("/")
