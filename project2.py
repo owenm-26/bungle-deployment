@@ -16,8 +16,13 @@ from bottle import (
 )
 import defenses
 import database
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-authSecret = open("./authsecret").read()
+
+authSecret = os.getenv("AUTH_SECRET")
+# authSecret = open("./authsecret").read()
 
 
 @get("/")

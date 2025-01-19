@@ -3,3 +3,4 @@ authsecret
 dbsecret
 .venv
 __pycache__
+.env
